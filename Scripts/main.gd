@@ -6,7 +6,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print_tree_pretty()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,3 +18,7 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
+
+func _on_player_ship_hit(player):
+	player.queue_free()
+	print("GAME OVER!")

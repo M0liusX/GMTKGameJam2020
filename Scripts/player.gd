@@ -2,12 +2,12 @@ extends KinematicBody2D
 
 
 # Declare member variables here
-
-const MAX_SPEED = 10
-const ACCELERATION = 2
-const FRICTION = 2
+export var MAX_SPEED = 10
+export var ACCELERATION = 2
+export var FRICTION = 2
 
 var velocity = Vector2.ZERO
+signal hit(player)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,4 +28,6 @@ func _process(_delta):
 		velocity = velocity.move_toward(inputVector * MAX_SPEED, ACCELERATION)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	move_and_collide(velocity)
+	var collisionCheck = move_and_collide(velocity)
+	if collisionCheck:
+		emit_signal("hit", self)
