@@ -1,0 +1,424 @@
+[gd_scene load_steps=71 format=2]
+
+[ext_resource path="res://Scripts/boss.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Short Bob #1/Silver #4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Art/Waifu/Costume/seifuku 1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Hair/Silver #3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Bob/Silver.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Art/Waifu/Blush/1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Summer Dress.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Art/Waifu/Accessories/Flower.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Twin Tail/Blondie #2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Art/Waifu/Blush/2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Twin tail  Short Hair/Blond.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Long Hair  Hime Cut/Brown #1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Twin tail  Short Hair/Silver #7.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Hair/Pink #3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Bob/Blondie.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Short Bob #1/Pink #4.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Twin tail  Short Hair/Pink #7.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Bob/Brown.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Silver #5.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Bob/Pink.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Twin Tail/dark.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Long Hair  Hime Cut/Blondie #1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Long Hair/Brown #6.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Long Hair  Hime Cut/Dark #1.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Twin Tail/Brown #2.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Pajama.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Art/Waifu/Costume/seifuku 2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Towel.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Art/Waifu/Accessories/Circle Glasses.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Hair/Blondie #3.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Art/Waifu/Accessories/Black Glasses.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Art/Waifu/Costume/PE uniform.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Short Bob #1/Dark #3.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Twin Tail/Pink #2.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Art/Waifu/Accessories/Choker.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Short Bob #1/Blondie #4.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Short Bob #1/Brown #4.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Long Hair/Silver #6.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Hoodie 1.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Hair/Dark #2.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Twin Tail/Silver #2.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Sswimsuit.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Art/Waifu/Accessories/Red Glasses.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Twin tail  Short Hair/Dark #6.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Long Hair/Dark #5.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Short Hair/Brown #3.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Long Hair/Blondie #6.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Long Hair/Pink #6.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Art/Waifu/Costume/Winter outfit.png" type="Texture" id=49]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Long Hair  Hime Cut/Pink #1.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Art/Waifu/Hair behind/Long Hair  Hime Cut/Silver #1.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Twin tail  Short Hair/Brown #7.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Art/Waifu/Paper.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Angry.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Annoyed.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Delighted.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Laugh.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Art/Waifu/Expression/normal.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Sad.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Art/Waifu/Base Body.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Shocked.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Sleepy.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Blondie #5.png" type="Texture" id=63]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Smile 2.png" type="Texture" id=64]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Smile.png" type="Texture" id=65]
+[ext_resource path="res://Assets/Art/Waifu/Expression/Smug.png" type="Texture" id=66]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Brown #5.png" type="Texture" id=67]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Dark #4.png" type="Texture" id=68]
+[ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Pink #5.png" type="Texture" id=69]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 69.0
+
+[node name="Boss" type="KinematicBody2D" groups=[
+"boss",
+"enemy",
+]]
+position = Vector2( 1131, 344 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Node2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Background" type="Node2D" parent="Sprite"]
+visible = false
+
+[node name="Paper" type="Sprite" parent="Sprite/Background"]
+position = Vector2( 37.0219, 1.07434 )
+texture = ExtResource( 53 )
+
+[node name="BackHair" type="Node2D" parent="Sprite"]
+position = Vector2( -16, -49 )
+
+[node name="Long" type="Node2D" parent="Sprite/BackHair"]
+
+[node name="Blondie #1" type="Sprite" parent="Sprite/BackHair/Long"]
+visible = false
+texture = ExtResource( 22 )
+
+[node name="Brown #1" type="Sprite" parent="Sprite/BackHair/Long"]
+visible = false
+texture = ExtResource( 12 )
+
+[node name="Dark #1" type="Sprite" parent="Sprite/BackHair/Long"]
+texture = ExtResource( 24 )
+
+[node name="Pink #1" type="Sprite" parent="Sprite/BackHair/Long"]
+visible = false
+texture = ExtResource( 50 )
+
+[node name="Silver #1" type="Sprite" parent="Sprite/BackHair/Long"]
+visible = false
+texture = ExtResource( 51 )
+
+[node name="Short" type="Node2D" parent="Sprite/BackHair"]
+visible = false
+position = Vector2( -70, 0 )
+
+[node name="Blondie #3" type="Sprite" parent="Sprite/BackHair/Short"]
+visible = false
+texture = ExtResource( 30 )
+
+[node name="Brown #3" type="Sprite" parent="Sprite/BackHair/Short"]
+texture = ExtResource( 46 )
+
+[node name="Dark #2" type="Sprite" parent="Sprite/BackHair/Short"]
+visible = false
+texture = ExtResource( 40 )
+
+[node name="Pink #3" type="Sprite" parent="Sprite/BackHair/Short"]
+visible = false
+texture = ExtResource( 14 )
+
+[node name="Silver #3" type="Sprite" parent="Sprite/BackHair/Short"]
+visible = false
+texture = ExtResource( 4 )
+
+[node name="Bob" type="Node2D" parent="Sprite/BackHair"]
+visible = false
+position = Vector2( 32, -156 )
+
+[node name="Blondie" type="Sprite" parent="Sprite/BackHair/Bob"]
+visible = false
+texture = ExtResource( 15 )
+
+[node name="Brown" type="Sprite" parent="Sprite/BackHair/Bob"]
+texture = ExtResource( 18 )
+
+[node name="Dark" type="Sprite" parent="Sprite/BackHair/Bob"]
+visible = false
+texture = ExtResource( 18 )
+
+[node name="Pink" type="Sprite" parent="Sprite/BackHair/Bob"]
+visible = false
+texture = ExtResource( 20 )
+
+[node name="Silver" type="Sprite" parent="Sprite/BackHair/Bob"]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="TwinTail" type="Node2D" parent="Sprite/BackHair"]
+visible = false
+position = Vector2( -2, 5 )
+
+[node name="Blondie #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Brown #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+texture = ExtResource( 25 )
+
+[node name="dark" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+visible = false
+texture = ExtResource( 21 )
+
+[node name="Pink #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+visible = false
+texture = ExtResource( 34 )
+
+[node name="Silver #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+visible = false
+texture = ExtResource( 41 )
+
+[node name="Body" type="Node2D" parent="Sprite"]
+
+[node name="Base Body" type="Sprite" parent="Sprite/Body"]
+texture = ExtResource( 60 )
+
+[node name="Accessories" type="Node2D" parent="Sprite"]
+
+[node name="Black Glasses" type="Sprite" parent="Sprite/Accessories"]
+position = Vector2( 4, -170 )
+texture = ExtResource( 31 )
+
+[node name="Choker" type="Sprite" parent="Sprite/Accessories"]
+visible = false
+position = Vector2( 0, 31 )
+texture = ExtResource( 35 )
+
+[node name="Circle Glasses" type="Sprite" parent="Sprite/Accessories"]
+visible = false
+position = Vector2( 5, -161.665 )
+texture = ExtResource( 29 )
+
+[node name="Flower" type="Sprite" parent="Sprite/Accessories"]
+visible = false
+position = Vector2( 164.185, -257.968 )
+z_index = 1
+texture = ExtResource( 8 )
+
+[node name="Red Glasses" type="Sprite" parent="Sprite/Accessories"]
+visible = false
+position = Vector2( 5, -170 )
+texture = ExtResource( 43 )
+
+[node name="Expression" type="Node2D" parent="Sprite"]
+position = Vector2( 5, -160 )
+
+[node name="Angry" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 3, -5 )
+texture = ExtResource( 54 )
+
+[node name="Annoyed" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -20 )
+texture = ExtResource( 55 )
+
+[node name="Delighted" type="Sprite" parent="Sprite/Expression"]
+visible = false
+texture = ExtResource( 56 )
+
+[node name="Laugh" type="Sprite" parent="Sprite/Expression"]
+visible = false
+texture = ExtResource( 57 )
+
+[node name="normal" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -12 )
+texture = ExtResource( 58 )
+
+[node name="Sad" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -12 )
+texture = ExtResource( 59 )
+
+[node name="Shocked" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -21 )
+texture = ExtResource( 61 )
+
+[node name="Sleepy" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -3 )
+texture = ExtResource( 62 )
+
+[node name="Smile 2" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( -1, -9 )
+texture = ExtResource( 64 )
+
+[node name="Smile" type="Sprite" parent="Sprite/Expression"]
+visible = false
+position = Vector2( 0, -15 )
+texture = ExtResource( 65 )
+
+[node name="Smug" type="Sprite" parent="Sprite/Expression"]
+position = Vector2( 0, -13 )
+texture = ExtResource( 66 )
+
+[node name="Clothes" type="Node2D" parent="Sprite"]
+position = Vector2( 0, 240 )
+
+[node name="Hoodie 1" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+texture = ExtResource( 39 )
+
+[node name="Pajama" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, 5 )
+texture = ExtResource( 26 )
+
+[node name="PE uniform" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, -16 )
+texture = ExtResource( 32 )
+
+[node name="seifuku 1" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, 10 )
+texture = ExtResource( 3 )
+
+[node name="seifuku 2" type="Sprite" parent="Sprite/Clothes"]
+position = Vector2( 0, 10 )
+texture = ExtResource( 27 )
+
+[node name="Sswimsuit" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, 15 )
+texture = ExtResource( 42 )
+
+[node name="Summer Dress" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, 25 )
+texture = ExtResource( 7 )
+
+[node name="Towel" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, 110 )
+texture = ExtResource( 28 )
+
+[node name="Winter outfit" type="Sprite" parent="Sprite/Clothes"]
+visible = false
+position = Vector2( 0, -5 )
+texture = ExtResource( 49 )
+
+[node name="FrontHair" type="Node2D" parent="Sprite"]
+position = Vector2( 5, -140 )
+
+[node name="Long" type="Node2D" parent="Sprite/FrontHair"]
+position = Vector2( 0, -13 )
+
+[node name="Blondie #6" type="Sprite" parent="Sprite/FrontHair/Long"]
+visible = false
+texture = ExtResource( 47 )
+
+[node name="Brown #6" type="Sprite" parent="Sprite/FrontHair/Long"]
+visible = false
+texture = ExtResource( 23 )
+
+[node name="Dark #5" type="Sprite" parent="Sprite/FrontHair/Long"]
+texture = ExtResource( 45 )
+
+[node name="Pink #6" type="Sprite" parent="Sprite/FrontHair/Long"]
+visible = false
+texture = ExtResource( 48 )
+
+[node name="Silver #6" type="Sprite" parent="Sprite/FrontHair/Long"]
+visible = false
+texture = ExtResource( 38 )
+
+[node name="Hime" type="Node2D" parent="Sprite/FrontHair"]
+visible = false
+position = Vector2( 0, -4 )
+
+[node name="Blondie #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
+visible = false
+texture = ExtResource( 63 )
+
+[node name="Brown #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
+texture = ExtResource( 67 )
+
+[node name="Dark #4" type="Sprite" parent="Sprite/FrontHair/Hime"]
+visible = false
+texture = ExtResource( 68 )
+
+[node name="Pink #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
+visible = false
+texture = ExtResource( 69 )
+
+[node name="Silver #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
+visible = false
+texture = ExtResource( 19 )
+
+[node name="Bob" type="Node2D" parent="Sprite/FrontHair"]
+visible = false
+position = Vector2( 0, -120 )
+
+[node name="Blondie #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
+visible = false
+texture = ExtResource( 36 )
+
+[node name="Brown #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
+texture = ExtResource( 37 )
+
+[node name="Dark #3" type="Sprite" parent="Sprite/FrontHair/Bob"]
+visible = false
+texture = ExtResource( 33 )
+
+[node name="Pink #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
+visible = false
+texture = ExtResource( 16 )
+
+[node name="Silver #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="TwinTail" type="Node2D" parent="Sprite/FrontHair"]
+visible = false
+position = Vector2( 0, -120 )
+
+[node name="Blond" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+visible = false
+texture = ExtResource( 11 )
+
+[node name="Brown #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+texture = ExtResource( 52 )
+
+[node name="Dark #6" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+visible = false
+texture = ExtResource( 44 )
+
+[node name="Pink #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+visible = false
+texture = ExtResource( 17 )
+
+[node name="Silver #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+visible = false
+texture = ExtResource( 13 )
+
+[node name="Blush" type="Node2D" parent="Sprite"]
+position = Vector2( 9, -121 )
+
+[node name="1" type="Sprite" parent="Sprite/Blush"]
+texture = ExtResource( 6 )
+
+[node name="2" type="Sprite" parent="Sprite/Blush"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
