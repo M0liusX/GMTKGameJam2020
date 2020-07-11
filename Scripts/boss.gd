@@ -155,6 +155,7 @@ func state_machine():
 			
 func got_hit(damage):
 	health -= damage
+	print("boss health: " + str(health))
 	
 func show_character():
 	print("Show")

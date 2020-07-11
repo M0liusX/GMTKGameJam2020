@@ -73,7 +73,7 @@ func checkCollisions(shipCheck, bulletCheck):
 		if bulletCheck:
 			if bulletCheck.collider.is_in_group("enemy"):
 				print("enemy hit")
-				# hit_enemy()
+				bulletCheck.collider.got_hit(10)
 			activeBullet.queue_free()
 			Mode = SHIP
 		
