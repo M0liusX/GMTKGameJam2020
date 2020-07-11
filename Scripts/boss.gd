@@ -7,6 +7,7 @@ extends KinematicBody2D
 
 enum State {IDLE,
 			BUBBLEY,
+			SUMMON,
 }
 
 # Visual Enums
@@ -61,7 +62,7 @@ var elapsedTime = 0
 var actionTime = 0
 var actionCounter = 0
 
-var currentState = State.BUBBLEY
+var currentState = State.IDLE
 
 const HAIRCOLORS = 5
 onready var BackHair = $Sprite/BackHair
@@ -79,6 +80,8 @@ export(Expression) var expression = -1
 
 # ATTACKS
 const BUBBLE = preload("res://Objects/BossAttacks/Bubble.tscn")
+const BASIC_ENEMY = preload("res://Objects/BasicEnemy/BasicEnemyWithPath.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	show_character()
@@ -115,52 +118,90 @@ func _process(delta):
 func process_laws():
 	if elapsedTime > stepInterval:
 		elapsedTime = 0
-		Laws.step(get_potential_laws())
+		var newLaw = Laws.step(get_potential_laws())
+		
 
 func do_idle():
-	expression = Expression.NORMAL
 	show_character()
+	if actionTime > 3:
+		actionTime = 0
+		expression = Expression.NORMAL
+		change_state(State.SUMMON)
+
+func do_summon():
+	show_character()
+	if actionTime > 2:
+		actionTime = 0
+		actionCounter += 1
+		expression = Expression.LAUGH
+		# Make Instance
+		var Enemy = BASIC_ENEMY.instance()
+		var position = Vector2(-1800, -800 +  (randi()%1)*400)
+		Enemy.set_global_position(position)
+		print(Enemy.global_position)
+		self.add_child(Enemy)
 	
+	if actionCounter > 1:
+		change_state(State.IDLE)
+		
 func do_bubbley():
-	expression = Expression.ANGRY
 	show_character()
-	
 	if actionTime > 0.5:
+		expression = Expression.ANGRY
 		actionTime = actionCounter*0.022
 		 #Make instance
 		var BubbleInstance = BUBBLE.instance()
 		var position = Vector2(-100 , (randi() % 600) - 300)
-		BubbleInstance.set_position(Vector2(-100 , (randi() % 600) - 300))
+		BubbleInstance.set_position(position)
+		var scaling = randf()*2
+		BubbleInstance.set_scale(Vector2(1+scaling, 1+scaling))
 		self.add_child(BubbleInstance)
 		
 		if Laws.Law.DOUBLE_BULLETS in Laws.currentLaws:
 			var BubbleInstance2 = BUBBLE.instance()
 			position = Vector2(position.x, position.y + 10)
 			BubbleInstance2.set_position(position)
+			BubbleInstance2.set_scale(Vector2(1+scaling, 1+scaling))
 			self.add_child(BubbleInstance2)
 			
 		actionCounter+=1
 
 	if actionCounter > 10:
-		currentState = State.IDLE
+		change_state(State.IDLE)
 	
 func get_potential_laws():
 	match currentState:
+		State.BUBBLEY:
+			return [Laws.Law.DOUBLE_BULLETS]
 		_:
 			return range(Laws.LAW_COUNT)
 
+func change_state(newState):
+	actionCounter = 0
+	actionTime = 0
+	currentState = newState
+	
 func state_machine():
 	match currentState:
 		State.BUBBLEY:
 			do_bubbley()
 		State.IDLE:
 			do_idle()
+		State.SUMMON:
+			do_summon()
 		_:
 			do_idle()
 			
 func got_hit(damage):
 	health -= damage
+	actionTime = 0
+	expression = Expression.SHOCKED
+	show_character()
 	print("boss health: " + str(health))
+	
+	if health <= 0:
+		print("YOU WIN")
+		queue_free()
 	
 func show_character():
 	randomize()

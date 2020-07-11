@@ -28,3 +28,6 @@ func _process(delta):
 	move_and_collide(direction*delta*speed)
 	if get_global_position().x < -10:
 		queue_free()
+
+func got_hit(damage = 0):
+	queue_free()

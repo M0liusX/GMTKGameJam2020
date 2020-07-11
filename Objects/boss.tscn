@@ -70,8 +70,9 @@
 [ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Dark #4.png" type="Texture" id=68]
 [ext_resource path="res://Assets/Art/Waifu/Hair front/Hime Cut/Pink #5.png" type="Texture" id=69]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 69.0
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.0
+height = 170.0
 
 [node name="Boss" type="KinematicBody2D" groups=[
 "boss",
@@ -421,4 +422,5 @@ visible = false
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
 shape = SubResource( 1 )

@@ -46,6 +46,9 @@ func print_law(law):
 func step(available = range(LAW_COUNT)):
 	if currentLaws.size() == totalLaws:
 		currentLaws.pop_back()
-	currentLaws.push_front(futureLaws.pop_back())
+	var newLaw = futureLaws.pop_back()
+	currentLaws.push_front(newLaw)
 	futureLaws.push_front(available[randi() % available.size()])
 	display()
+	
+	return newLaw

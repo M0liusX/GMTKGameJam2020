@@ -20,9 +20,9 @@ func _updateHealth(healthChangeAmount):
 var i = 100
 func _process(_delta):
 	if i == 0:
-		print("Value:", value)
+		#print("Value:", value)
 		_updateHealth(-5)
 		i = 100
 	i -= 1
-	print(i)
+	#print(i)
 #	pass

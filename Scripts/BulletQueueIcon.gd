@@ -14,7 +14,7 @@ func _ready():
 func _updateIcon(bulletType):
 	var bulletIcon = path+bulletType
 	texture = load(bulletIcon)
-	print("done")
+	#print("done")
 
 func _getBulletType():
 	# get a num between 1 and 5
@@ -39,4 +39,4 @@ func _process(_delta):
 		_updateIcon(nextBullet)
 		i = 100
 	i = i-1
-	print(i)
+	#print(i)
