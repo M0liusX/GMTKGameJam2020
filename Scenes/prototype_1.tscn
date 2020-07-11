@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Art/space1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Art/ship.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Art/fighter.png" type="Texture" id=6]
 [ext_resource path="res://Objects/bullet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 14 )
@@ -19,7 +20,7 @@ extents = Vector2( 10, 368 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node"]
 script = ExtResource( 3 )
 
 [node name="background" type="Sprite" parent="."]
@@ -80,7 +81,7 @@ shape = SubResource( 3 )
 "enemy",
 ]]
 position = Vector2( 1300, 200 )
-rotation = 4.71239
+rotation = -1.5708
 collision_layer = 2
 collision_mask = 2147483650
 script = ExtResource( 5 )
@@ -92,4 +93,8 @@ shape = SubResource( 4 )
 texture = ExtResource( 6 )
 
 [node name="bullet" parent="." instance=ExtResource( 7 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 8 )]
 [connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
