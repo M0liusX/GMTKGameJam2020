@@ -29,6 +29,10 @@ func _process(_delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	var collisionCheck = move_and_collide(velocity)
-	if collisionCheck:
-		if collisionCheck.collider.is_in_group("enemy"):
-			emit_signal("hit", self)
+	checkCollisions(collisionCheck)
+
+func checkCollisions(check):
+	if not check:
+		return
+	if check.collider.is_in_group("enemy"):
+		emit_signal("hit", self)
