@@ -19,7 +19,7 @@ func _process(_delta):
 	
 	# Processing player input
 	var inputVector = Vector2.ZERO
-	inputVector.x = 0
+	inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up") 
 	inputVector = inputVector.normalized()
 	
@@ -30,4 +30,5 @@ func _process(_delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	var collisionCheck = move_and_collide(velocity)
 	if collisionCheck:
-		emit_signal("hit", self)
+		if collisionCheck.collider.is_in_group("enemy"):
+			emit_signal("hit", self)
