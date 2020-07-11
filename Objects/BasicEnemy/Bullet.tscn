@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Art/M484BulletCollection1_edit.png" type="Texture" id=1]
+[ext_resource path="res://Objects/BasicEnemy/Bullet.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 6 )
+
+[node name="bullet" type="KinematicBody2D" groups=[
+"enemy",
+]]
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 2147483650
+script = ExtResource( 2 )
+speed = 18
+
+[node name="bullet_hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="bullet_sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 12, 10, 8, 12 )
