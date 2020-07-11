@@ -6,7 +6,7 @@ extends Node
 # var b = "text"
 enum Law {REVERSE_CONTROLS,   # REVERSES (UP/DOWN) & (LEFT/RIGHT) 
 		  MOUSE_CONTROLS,     # CHANGES CONTROL SCHEME 
-		 }
+}
 		
 const LAW_COUNT = 2   # Update whenever you add a new law (Subtract Special Laws)
 
