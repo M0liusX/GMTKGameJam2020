@@ -1,4 +1,3 @@
-tool
 extends KinematicBody2D
 
 
@@ -7,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 
 enum State {IDLE,
+			BUBBLEY,
 }
 
 # Visual Enums
@@ -42,11 +42,26 @@ enum Accessory {RANDOM = -1,
 				GLASSES_RED,
 }
 
+enum Expression {RANDOM = -1,
+				ANGRY,
+				ANNOYED,
+				DELIGHTED,
+				LAUGH,
+				NORMAL,
+				SAD,
+				SHOCKED,
+				SLEEPY,
+				SMILE2,
+				SMILE1,
+				SMUG,
+}
 export var health = 100
 var stepInterval = 10   # in s
 var elapsedTime = 0
+var actionTime = 0
+var actionCounter = 0
 
-var currentState = State.IDLE
+var currentState = State.BUBBLEY
 
 const HAIRCOLORS = 5
 onready var BackHair = $Sprite/BackHair
@@ -60,7 +75,10 @@ export(Hairstyle) var hairstyle = -1
 export(Accessory) var accessory = -1
 export(Costume) var clothes = -1
 export(Haircolor) var haircolor = -1 
-var expression = -1
+export(Expression) var expression = -1
+
+# ATTACKS
+const BUBBLE = preload("res://Objects/BossAttacks/Bubble.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	show_character()
@@ -84,11 +102,14 @@ func randomize_it(list, color = -1, set = -1):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	elapsedTime += delta
-	process_laws()
-	state_machine()
 	if Engine.editor_hint:
 		show_character()
+		return
+		
+	elapsedTime += delta
+	actionTime += delta
+	process_laws()
+	state_machine()
 	
 # Checks elapsed time and adds a new law`
 func process_laws():
@@ -96,6 +117,28 @@ func process_laws():
 		elapsedTime = 0
 		Laws.step(get_potential_laws())
 
+func do_idle():
+	expression = Expression.NORMAL
+	show()
+	
+func do_bubbley():
+	expression = Expression.ANNOYED
+	show()
+	
+	if actionTime > 0.5:
+		actionTime = actionCounter*0.022
+		 #Make instance
+		var BubbleInstance = BUBBLE.instance()
+		#You could now make changes to the new instance if you wanted
+		print("HELLO")
+		BubbleInstance.set_position(Vector2(-100 , (randi() % 600) - 300))
+		#Attach it to the tree
+		self.add_child(BubbleInstance)
+		actionCounter+=1
+
+	if actionCounter > 10:
+		currentState = State.IDLE
+	
 func get_potential_laws():
 	match currentState:
 		_:
@@ -103,18 +146,23 @@ func get_potential_laws():
 
 func state_machine():
 	match currentState:
+		State.BUBBLEY:
+			do_bubbley()
+		State.IDLE:
+			do_idle()
 		_:
-			return
-
+			do_idle()
+			
 func got_hit(damage):
 	health -= damage
 	
 func show_character():
+	print("Show")
 	randomize()
 	if haircolor == -1:
 		haircolor = randi() % HAIRCOLORS
 	var chosenstyle = randomize_it(BackHair.get_children(), haircolor, hairstyle)
 	randomize_it(FrontHair.get_children(), haircolor, chosenstyle)
 	randomize_it(Accessories.get_children(), -1, accessory)
-	expression = randomize_it(Expressions.get_children(), -1, expression)
+	randomize_it(Expressions.get_children(), -1, expression)
 	randomize_it(Clothes.get_children(), -1, clothes)

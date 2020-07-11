@@ -77,14 +77,12 @@ radius = 69.0
 "boss",
 "enemy",
 ]]
+position = Vector2( 1131, 344 )
 script = ExtResource( 1 )
-hairstyle = 0
-accessory = 4
-clothes = 8
-haircolor = 3
+clothes = 7
+expression = 0
 
 [node name="Sprite" type="Node2D" parent="."]
-position = Vector2( 508, 192 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="Background" type="Node2D" parent="Sprite"]
@@ -108,10 +106,10 @@ visible = false
 texture = ExtResource( 12 )
 
 [node name="Dark #1" type="Sprite" parent="Sprite/BackHair/Long"]
-visible = false
 texture = ExtResource( 24 )
 
 [node name="Pink #1" type="Sprite" parent="Sprite/BackHair/Long"]
+visible = false
 texture = ExtResource( 50 )
 
 [node name="Silver #1" type="Sprite" parent="Sprite/BackHair/Long"]
@@ -123,10 +121,10 @@ visible = false
 position = Vector2( -70, 0 )
 
 [node name="Blondie #3" type="Sprite" parent="Sprite/BackHair/Short"]
+visible = false
 texture = ExtResource( 30 )
 
 [node name="Brown #3" type="Sprite" parent="Sprite/BackHair/Short"]
-visible = false
 texture = ExtResource( 46 )
 
 [node name="Dark #2" type="Sprite" parent="Sprite/BackHair/Short"]
@@ -150,7 +148,6 @@ visible = false
 texture = ExtResource( 15 )
 
 [node name="Brown" type="Sprite" parent="Sprite/BackHair/Bob"]
-visible = false
 texture = ExtResource( 18 )
 
 [node name="Dark" type="Sprite" parent="Sprite/BackHair/Bob"]
@@ -158,6 +155,7 @@ visible = false
 texture = ExtResource( 18 )
 
 [node name="Pink" type="Sprite" parent="Sprite/BackHair/Bob"]
+visible = false
 texture = ExtResource( 20 )
 
 [node name="Silver" type="Sprite" parent="Sprite/BackHair/Bob"]
@@ -173,7 +171,6 @@ visible = false
 texture = ExtResource( 9 )
 
 [node name="Brown #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
-visible = false
 texture = ExtResource( 25 )
 
 [node name="dark" type="Sprite" parent="Sprite/BackHair/TwinTail"]
@@ -181,6 +178,7 @@ visible = false
 texture = ExtResource( 21 )
 
 [node name="Pink #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
+visible = false
 texture = ExtResource( 34 )
 
 [node name="Silver #2" type="Sprite" parent="Sprite/BackHair/TwinTail"]
@@ -195,7 +193,6 @@ texture = ExtResource( 60 )
 [node name="Accessories" type="Node2D" parent="Sprite"]
 
 [node name="Black Glasses" type="Sprite" parent="Sprite/Accessories"]
-visible = false
 position = Vector2( 4, -170 )
 texture = ExtResource( 31 )
 
@@ -216,6 +213,7 @@ z_index = 1
 texture = ExtResource( 8 )
 
 [node name="Red Glasses" type="Sprite" parent="Sprite/Accessories"]
+visible = false
 position = Vector2( 5, -170 )
 texture = ExtResource( 43 )
 
@@ -266,11 +264,11 @@ position = Vector2( -1, -9 )
 texture = ExtResource( 64 )
 
 [node name="Smile" type="Sprite" parent="Sprite/Expression"]
+visible = false
 position = Vector2( 0, -15 )
 texture = ExtResource( 65 )
 
 [node name="Smug" type="Sprite" parent="Sprite/Expression"]
-visible = false
 position = Vector2( 0, -13 )
 texture = ExtResource( 66 )
 
@@ -297,7 +295,6 @@ position = Vector2( 0, 10 )
 texture = ExtResource( 3 )
 
 [node name="seifuku 2" type="Sprite" parent="Sprite/Clothes"]
-visible = false
 position = Vector2( 0, 10 )
 texture = ExtResource( 27 )
 
@@ -317,12 +314,12 @@ position = Vector2( 0, 110 )
 texture = ExtResource( 28 )
 
 [node name="Winter outfit" type="Sprite" parent="Sprite/Clothes"]
+visible = false
 position = Vector2( 0, -5 )
 texture = ExtResource( 49 )
 
 [node name="FrontHair" type="Node2D" parent="Sprite"]
 position = Vector2( 5, -140 )
-scale = Vector2( 1, 1 )
 
 [node name="Long" type="Node2D" parent="Sprite/FrontHair"]
 position = Vector2( 0, -13 )
@@ -336,10 +333,10 @@ visible = false
 texture = ExtResource( 23 )
 
 [node name="Dark #5" type="Sprite" parent="Sprite/FrontHair/Long"]
-visible = false
 texture = ExtResource( 45 )
 
 [node name="Pink #6" type="Sprite" parent="Sprite/FrontHair/Long"]
+visible = false
 texture = ExtResource( 48 )
 
 [node name="Silver #6" type="Sprite" parent="Sprite/FrontHair/Long"]
@@ -351,10 +348,10 @@ visible = false
 position = Vector2( 0, -4 )
 
 [node name="Blondie #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
+visible = false
 texture = ExtResource( 63 )
 
 [node name="Brown #5" type="Sprite" parent="Sprite/FrontHair/Hime"]
-visible = false
 texture = ExtResource( 67 )
 
 [node name="Dark #4" type="Sprite" parent="Sprite/FrontHair/Hime"]
@@ -378,7 +375,6 @@ visible = false
 texture = ExtResource( 36 )
 
 [node name="Brown #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
-visible = false
 texture = ExtResource( 37 )
 
 [node name="Dark #3" type="Sprite" parent="Sprite/FrontHair/Bob"]
@@ -386,6 +382,7 @@ visible = false
 texture = ExtResource( 33 )
 
 [node name="Pink #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
+visible = false
 texture = ExtResource( 16 )
 
 [node name="Silver #4" type="Sprite" parent="Sprite/FrontHair/Bob"]
@@ -401,7 +398,6 @@ visible = false
 texture = ExtResource( 11 )
 
 [node name="Brown #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
-visible = false
 texture = ExtResource( 52 )
 
 [node name="Dark #6" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
@@ -409,6 +405,7 @@ visible = false
 texture = ExtResource( 44 )
 
 [node name="Pink #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
+visible = false
 texture = ExtResource( 17 )
 
 [node name="Silver #7" type="Sprite" parent="Sprite/FrontHair/TwinTail"]
@@ -426,5 +423,4 @@ visible = false
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
