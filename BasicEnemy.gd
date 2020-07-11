@@ -16,6 +16,7 @@ func ShootBullet():
 	var bullet = bullet_scene.instance()
 	bullet.set_position(Vector2(0,0))
 	add_child(bullet)
+	bullet.set_as_toplevel(true)
 
 
 # Called when the node enters the scene tree for the first time.
