@@ -79,8 +79,6 @@ radius = 69.0
 ]]
 position = Vector2( 1131, 344 )
 script = ExtResource( 1 )
-clothes = 7
-expression = 0
 
 [node name="Sprite" type="Node2D" parent="."]
 scale = Vector2( 0.2, 0.2 )

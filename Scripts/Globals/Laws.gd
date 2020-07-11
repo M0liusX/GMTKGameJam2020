@@ -6,9 +6,10 @@ extends Node
 # var b = "text"
 enum Law {REVERSE_CONTROLS,   # REVERSES (UP/DOWN) & (LEFT/RIGHT) 
 		  MOUSE_CONTROLS,     # CHANGES CONTROL SCHEME 
+		  DOUBLE_BULLETS,     # All Bullets Doubles 
 }
 		
-const LAW_COUNT = 2   # Update whenever you add a new law (Subtract Special Laws)
+const LAW_COUNT = 3   # Update whenever you add a new law (Subtract Special Laws)
 
 var currentLaws = []
 var futureLaws = []
@@ -36,6 +37,8 @@ func print_law(law):
 			print("REVERSE_CONTROLS")
 		Law.MOUSE_CONTROLS:
 			print("MOUSE_CONTROLS")
+		Law.DOUBLE_BULLETS:
+			print("DOUBLE_BULLETS")
 		_:
 			print("Error")
 

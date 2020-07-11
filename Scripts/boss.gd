@@ -119,21 +119,26 @@ func process_laws():
 
 func do_idle():
 	expression = Expression.NORMAL
-	show()
+	show_character()
 	
 func do_bubbley():
-	expression = Expression.ANNOYED
-	show()
+	expression = Expression.ANGRY
+	show_character()
 	
 	if actionTime > 0.5:
 		actionTime = actionCounter*0.022
 		 #Make instance
 		var BubbleInstance = BUBBLE.instance()
-		#You could now make changes to the new instance if you wanted
-		print("HELLO")
+		var position = Vector2(-100 , (randi() % 600) - 300)
 		BubbleInstance.set_position(Vector2(-100 , (randi() % 600) - 300))
-		#Attach it to the tree
 		self.add_child(BubbleInstance)
+		
+		if Laws.Law.DOUBLE_BULLETS in Laws.currentLaws:
+			var BubbleInstance2 = BUBBLE.instance()
+			position = Vector2(position.x, position.y + 10)
+			BubbleInstance2.set_position(position)
+			self.add_child(BubbleInstance2)
+			
 		actionCounter+=1
 
 	if actionCounter > 10:
@@ -158,12 +163,11 @@ func got_hit(damage):
 	print("boss health: " + str(health))
 	
 func show_character():
-	print("Show")
 	randomize()
 	if haircolor == -1:
 		haircolor = randi() % HAIRCOLORS
 	var chosenstyle = randomize_it(BackHair.get_children(), haircolor, hairstyle)
-	randomize_it(FrontHair.get_children(), haircolor, chosenstyle)
-	randomize_it(Accessories.get_children(), -1, accessory)
-	randomize_it(Expressions.get_children(), -1, expression)
-	randomize_it(Clothes.get_children(), -1, clothes)
+	hairstyle = randomize_it(FrontHair.get_children(), haircolor, chosenstyle)
+	accessory = randomize_it(Accessories.get_children(), -1, accessory)
+	expression = randomize_it(Expressions.get_children(), -1, expression)
+	clothes = randomize_it(Clothes.get_children(), -1, clothes)
