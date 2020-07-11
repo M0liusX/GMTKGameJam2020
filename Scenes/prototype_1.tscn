@@ -33,27 +33,29 @@ shape = SubResource( 1 )
 [node name="player_ship_sprite" type="Sprite" parent="player_ship"]
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="borders" type="Node2D" parent="."]
+
+[node name="top" type="StaticBody2D" parent="borders"]
 position = Vector2( 640, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="top_collision_shape" type="CollisionShape2D" parent="borders/top"]
 shape = SubResource( 2 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="bottom" type="StaticBody2D" parent="borders"]
 position = Vector2( 640, 720 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="bottom_collision_shape" type="CollisionShape2D" parent="borders/bottom"]
 shape = SubResource( 2 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="left" type="StaticBody2D" parent="borders"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="left_collision_shape" type="CollisionShape2D" parent="borders/left"]
 position = Vector2( 0, 360 )
 shape = SubResource( 3 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+[node name="right" type="StaticBody2D" parent="borders"]
 position = Vector2( 1280, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+[node name="right_collision_shape" type="CollisionShape2D" parent="borders/right"]
 position = Vector2( 0, 360 )
 shape = SubResource( 3 )
