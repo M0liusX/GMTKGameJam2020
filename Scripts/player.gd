@@ -2,15 +2,20 @@ extends KinematicBody2D
 
 
 # Declare member variables here
-onready var bullet = preload("res://Objects/bullet.tscn")
+onready var bullet = preload("res://Objects/bullet2.tscn")
+onready var bullet2 = preload("res://Objects/bullet3.tscn")
+onready var bullet3 = preload("res://Objects/bullet4.tscn")
+onready var bulletSelection = [bullet, bullet2, bullet3]
 onready var timer = $Timer
-var activeBullets = []
 
+const BULLET_COUNT = 3
 export var MAX_SPEED = 10
 export var ACCELERATION = 2
 export var FRICTION = 2
 var movementRNG = 0
 var flashing = false
+var activeBullets = []
+var nextBullet
 
 enum {SHIP, BULLET}
 var Mode = SHIP
@@ -24,6 +29,7 @@ signal hit(player)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	nextBullet = bulletSelection[randi()%3]
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -82,7 +88,8 @@ func _process(_delta):
 
 	# Check to see if player fired a bullet and switch mode
 	if Input.is_action_just_pressed("ui_select") and Mode == SHIP:
-		var activeBullet = bullet.instance()
+		var activeBullet = nextBullet.instance()
+		nextBullet = bulletSelection[randi() % 3]
 		add_child(activeBullet)
 		activeBullet.set_as_toplevel(true)
 		var iposition = self.get_position()
@@ -116,7 +123,7 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 		if shipCheck:
 			if shipCheck.collider.is_in_group("enemy") and not (Laws.Law.INVINCIBILITY in Laws.currentLaws):
 				print("hit")
-				# Layers 4, 2^3
+				# Switching layers here creates invincibility Layers 4, 2^3 = 8
 				_set_layers(8)
 				emit_signal("hit", self)
 				timer.start()
