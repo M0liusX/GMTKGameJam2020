@@ -4,6 +4,8 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+onready var StreamPlayer = get_node("../AudioStreamPlayer")
+
 signal hit(boss)
 
 enum State {IDLE,
@@ -59,13 +61,13 @@ enum Expression {RANDOM = -1,
 				SMILE1,
 				SMUG,
 }
-export var health = 500
+export var health = 250
 var stepInterval = 10   # in s
 var elapsedTime = 0
 var actionTime = 0
 var actionCounter = 0
 
-var currentState = State.END
+var currentState = State.START
 var Angry = false
 var InLove = false 
 var LoveMeter = 0
@@ -145,6 +147,9 @@ func do_start():
 	
 func do_end():
 	show_character()
+	if StreamPlayer != null:
+		StreamPlayer.stop()
+		
 	if actionCounter > 2:
 		return
 		
@@ -209,11 +214,17 @@ func do_bubbley():
 		change_state(State.IDLE)
 	
 func get_potential_laws():
+	var bonus = []
+	if InLove:
+		bonus.append(Laws.Law.INVINCIBILITY
+		)
 	match currentState:
 		State.BUBBLEY:
 			return [Laws.Law.DOUBLE_BULLETS]
-		_:
+		State.IDLE:
 			return range(Laws.LAW_COUNT)
+		_:
+			return (range(Laws.LAW_COUNT-1)+bonus)
 
 func change_state(newState):
 	actionCounter = 0
@@ -241,7 +252,7 @@ func got_hit(damage):
 	expression = Expression.SHOCKED
 	show_character()
 	print("boss health: " + str(health))
-	if health < 300:
+	if health < 200:
 		Angry = true
 		
 	### Love Meter Code
@@ -257,6 +268,10 @@ func got_hit(damage):
 	####
 	if health <= 0:
 		print("YOU WIN")
+		queue_free()
+	
+	if LoveMeter== 3 and currentState == State.END and actionCounter > 2:
+		emit_signal("hit", self, "THE END")
 		queue_free()
 		
 	#Dialogue shit
