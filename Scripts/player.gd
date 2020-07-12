@@ -108,10 +108,10 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 			if bulletCheck.collider.is_in_group("enemy") and !bulletCheck.collider.is_in_group("bullet"):
 				print("enemy hit")
 				bulletCheck.collider.got_hit(2)
-				activeBullets.erase(activeBullet)
-				activeBullet.queue_free()
-				if activeBullets.size() == 0:
-					Mode = SHIP
+			activeBullets.erase(activeBullet)
+			activeBullet.queue_free()
+			if activeBullets.size() == 0:
+				Mode = SHIP
 
 func _on_Timer_timeout():
 	# Layers 1, 2, and 4, i.e. 2^0 + 2^1 + 2^3 = 11
