@@ -1,16 +1,20 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/UI/HealthBar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/healthBarFillBoss.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/BulletQueueIcon.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/BulletQueueIcon.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Art/healthBarBG.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Art/healthBarFill.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/IconBox.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/UI.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/UI/IconBox.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/UI/UI.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Art/iconBox.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Art/BulletIcons/basic.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Art/fighter.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Art/dialogueBox.png" type="Texture" id=11]
+
+
+
+
 
 [node name="UI" type="Control"]
 anchor_right = 1.0

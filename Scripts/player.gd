@@ -9,6 +9,7 @@ export var MAX_SPEED = 10
 export var ACCELERATION = 2
 export var FRICTION = 2
 var movementRNG = 0
+var flashing = false
 
 enum {SHIP, BULLET}
 var Mode = SHIP
@@ -25,7 +26,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # NOTE: If we decide to use delta, remove underscore preceding it
 func _process(_delta):
+	
+	# Effect for hitting the player
+	if flashing:
+		modulate = Color(1,1,1, 0.1)
 
+	# Generate a random direction
 	movementRNG = randi() % 3
 	
 	var inputVector = Vector2.ZERO
@@ -69,11 +75,21 @@ func checkCollisions(shipCheck, bulletCheck):
 		if shipCheck:
 			if shipCheck.collider.is_in_group("enemy"):
 				print("hit")
+				# Layers 4, 2^3
+				_set_layers(8)
 				emit_signal("hit", self)
+				$Timer.start()
+				flashing = true
 		if bulletCheck:
-			if bulletCheck.collider.is_in_group("enemy"):
+			# @TODO: Double-check bullet on bullet collision
+			if bulletCheck.collider.is_in_group("enemy") and !bulletCheck.collider.is_in_group("bullet"):
 				print("enemy hit")
 				bulletCheck.collider.got_hit(10)
 			activeBullet.queue_free()
 			Mode = SHIP
-		
+
+func _on_Timer_timeout():
+	# Layers 1, 2, and 4, i.e. 2^0 + 2^1 + 2^3 = 11
+	_set_layers(11)
+	modulate = Color(1,1,1,1)
+	flashing = false
