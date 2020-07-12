@@ -49,11 +49,15 @@ func _process(_delta):
 		inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up") 
 	inputVector = inputVector.normalized()
-
-	if Laws.Law.MOUSE_CONTROLS in Laws.currentLaws:
-		velocity = mouseVelocity.move_toward(mouseVelocity * MAX_SPEED, ACCELERATION)
-		print(velocity)
 	
+	var currentLaws = [] + Laws.currentLaws
+	while Laws.Law.REVERSE_CONTROLS in currentLaws and not(Laws.Law.MOUSE_CONTROLS in Laws.currentLaws) and Mode == SHIP:
+		currentLaws.erase(Laws.Law.REVERSE_CONTROLS)
+		inputVector =-inputVector
+		
+	if Laws.Law.MOUSE_CONTROLS in Laws.currentLaws:
+		#velocity = mouseVelocity.move_toward(mouseVelocity * MAX_SPEED, ACCELERATION)
+		velocity = (get_global_mouse_position() - global_position) * 0.1
 	# Physics for movement
 	if inputVector:
 		velocity = velocity.move_toward(inputVector * MAX_SPEED, ACCELERATION)
@@ -66,6 +70,9 @@ func _process(_delta):
 		checkCollisions(collisionCheck, null)
 	elif Mode == BULLET:
 		for activeBullet in activeBullets:
+			if Laws.Law.MOUSE_CONTROLS in Laws.currentLaws:
+				velocity.y = (get_global_mouse_position().y - activeBullet.global_position.y) * 0.1
+				velocity.x = 10
 	#		var shipCheck = move_and_collide(Vector2.ZERO,true,true,true)
 			shipVelocity = shipVelocity.move_toward(directions[movementRNG] * MAX_SPEED, ACCELERATION)
 			var shipCheck = move_and_collide(shipVelocity)
@@ -86,20 +93,20 @@ func _process(_delta):
 		# Random Ship Movement
 		movementRNG = randi() % 3
 		
-		var currentLaws = [] + Laws.currentLaws
+		currentLaws = [] + Laws.currentLaws
 		#for i in range(1):
 		while Laws.Law.DOUBLE_BULLETS in currentLaws:
 			var activeBullet2 = bullet.instance()
 			add_child(activeBullet2)
 			activeBullet2.set_as_toplevel(true)
-			iposition = Vector2(iposition.x, iposition.y + 5)
+			iposition = Vector2(iposition.x, iposition.y + 10)
 			activeBullet2.set_position(iposition)
 			activeBullets.append(activeBullet2)
 			currentLaws.erase(Laws.Law.DOUBLE_BULLETS)
 	
 	# Check if active bullets leave the screen
 	for activeBullet in activeBullets:
-		if activeBullet.global_position.x > 1400:
+		if activeBullet.global_position.x > 1400 or activeBullet.global_position.x < 0 :
 			activeBullets.erase(activeBullet)
 			activeBullet.queue_free()
 			if activeBullets.size() == 0:
@@ -107,7 +114,7 @@ func _process(_delta):
 			
 func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 		if shipCheck:
-			if shipCheck.collider.is_in_group("enemy"):
+			if shipCheck.collider.is_in_group("enemy") and not (Laws.Law.INVINCIBILITY in Laws.currentLaws):
 				print("hit")
 				# Layers 4, 2^3
 				_set_layers(8)
@@ -121,8 +128,8 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 				print(bulletCheck.collider.get_name())
 				print("enemy hit")
 				bulletCheck.collider.got_hit(2)
-			activeBullets.erase(activeBullet)
-			activeBullet.queue_free()
+				activeBullets.erase(activeBullet)
+				activeBullet.queue_free()
 			if activeBullets.size() == 0:
 				Mode = SHIP
 

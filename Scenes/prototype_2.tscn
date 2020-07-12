@@ -113,7 +113,7 @@ texture = ExtResource( 6 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 9 )]
 
-[node name="DialogueBox" parent="CanvasLayer/UI" index="3"]
+[node name="DialogueBox" parent="CanvasLayer/UI" index="4"]
 script = ExtResource( 11 )
 
 [node name="TextBox" parent="CanvasLayer/UI/DialogueBox" index="1"]

@@ -57,7 +57,7 @@ enum Expression {RANDOM = -1,
 				SMILE1,
 				SMUG,
 }
-export var health = 100
+export var health = 500
 var stepInterval = 10   # in s
 var elapsedTime = 0
 var actionTime = 0
@@ -176,7 +176,7 @@ func get_potential_laws():
 		State.BUBBLEY:
 			return [Laws.Law.DOUBLE_BULLETS]
 		_:
-			return [Laws.Law.DOUBLE_BULLETS]
+			return [Laws.Law.REVERSE_CONTROLS]#range(Laws.LAW_COUNT)
 
 func change_state(newState):
 	actionCounter = 0
@@ -196,7 +196,6 @@ func state_machine():
 			
 func got_hit(damage):
 	health -= damage
-	actionTime = 0
 	expression = Expression.SHOCKED
 	show_character()
 	print("boss health: " + str(health))

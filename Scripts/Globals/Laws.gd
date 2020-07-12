@@ -8,9 +8,10 @@ enum Law {REVERSE_CONTROLS,   # REVERSES (UP/DOWN) & (LEFT/RIGHT)
 		  MOUSE_CONTROLS,     # CHANGES CONTROL SCHEME 
 		  DOUBLE_BULLETS,     # All Bullets Doubles
 		  INVINCIBILITY,      # Gives Player Invicibility  
+		  LOVE,               # Three Love and you win the secret ending!
 }
 		
-const LAW_COUNT = 3   # Update whenever you add a new law (Subtract Special Laws)
+const LAW_COUNT = 4   # Update whenever you add a new law (Subtract Special Laws)
 
 var currentLaws = []
 var futureLaws = []

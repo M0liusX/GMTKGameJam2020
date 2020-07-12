@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/UI/HealthBar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/healthBarFillBoss.png" type="Texture" id=2]
@@ -11,10 +11,14 @@
 [ext_resource path="res://Assets/Art/BulletIcons/basic.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Art/fighter.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Art/dialogueBox.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/UI/LawQueueIcon.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Art/LawIcons/Empty.png" type="Texture" id=13]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.12372
+margin_right = -1.12378
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,6 +96,98 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CurrentLaws" type="Control" parent="."]
+margin_left = 476.772
+margin_top = 18.2395
+margin_right = 516.772
+margin_bottom = 58.2395
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LawIcon" type="NinePatchRect" parent="CurrentLaws"]
+margin_left = 88.199
+margin_top = 4.4545
+margin_right = 128.199
+margin_bottom = 44.4545
+texture = ExtResource( 8 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BulletQueueIcon" type="TextureRect" parent="CurrentLaws/LawIcon"]
+margin_left = 4.23975
+margin_top = 3.99823
+margin_right = 132.24
+margin_bottom = 131.998
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
+expand = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LawIcon2" type="NinePatchRect" parent="CurrentLaws"]
+margin_left = 134.08
+margin_top = 3.78632
+margin_right = 174.08
+margin_bottom = 43.7863
+texture = ExtResource( 8 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BulletQueueIcon" type="TextureRect" parent="CurrentLaws/LawIcon2"]
+margin_left = 4.23975
+margin_top = 3.99823
+margin_right = 132.24
+margin_bottom = 131.998
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
+expand = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="LawIcon3" type="NinePatchRect" parent="CurrentLaws"]
+margin_left = 180.943
+margin_top = 3.78632
+margin_right = 220.943
+margin_bottom = 43.7863
+texture = ExtResource( 8 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BulletQueueIcon" type="TextureRect" parent="CurrentLaws/LawIcon3"]
+margin_left = 4.23975
+margin_top = 3.99823
+margin_right = 132.24
+margin_bottom = 131.998
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
+expand = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 2
 
 [node name="DialogueBox" type="NinePatchRect" parent="."]
 margin_left = 366.223
