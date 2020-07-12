@@ -19,18 +19,12 @@ func _updateIcon(bulletType):
 func _getBulletType():
 	# get a num between 1 and 5
 	match randi()%5+1:
-		1:
-			return "cannon.png"
-		2:
-			return "lazer.png"
-		3:
-			return "flamethrower.png"
-		4:
-			return "rapidfire.png"
-		5:
-			return "explosive.png"
-		_:
-			return "basic.png"
+		1: return "cannon.png"
+		2: return "lazer.png"
+		3: return "flamethrower.png"
+		4: return "rapidfire.png"
+		5: return "explosive.png"
+		_: return "basic.png"
 		
 var i = 100
 func _process(_delta):

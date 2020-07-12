@@ -39,3 +39,6 @@ func _on_player_ship_hit(player):
 func _on_Boss_hit(boss):
 	var bossHealth = $BossHealth/BossHealthBar
 	var health = bossHealth.updateHealth(-2)
+	var bossDialogue = $DialogueBox
+	bossDialogue.updateDialogue(health)
+	
