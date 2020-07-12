@@ -9,6 +9,9 @@ var maxHealth = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	value = maxHealth
+	
+	#set_size(Vector2(702,40))
+	#set_position(Vector2(6.852,675.652))
 	pass # Replace with function body.
 
 func updateHealth(healthChangeAmount):
@@ -17,13 +20,7 @@ func updateHealth(healthChangeAmount):
 	else:
 		value = int(value+healthChangeAmount) % maxHealth
 	return value
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var i = 100
-func _process(_delta):
-	if i == 0:
-		#print("Value:", value)
-#		_updateHealth(-5)
-		i = 100
-	i -= 1
-	#print(i)
-#	pass
+#func _process(_delta):
+

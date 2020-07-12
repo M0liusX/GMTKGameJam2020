@@ -113,23 +113,25 @@ texture = ExtResource( 6 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 9 )]
 
+[node name="PlayerHealth" parent="CanvasLayer/UI" index="0"]
+anchor_left = 0.00468755
+anchor_top = 1.02615
+anchor_right = 0.0125
+anchor_bottom = 1.02615
+
 [node name="DialogueBox" parent="CanvasLayer/UI" index="4"]
 script = ExtResource( 11 )
 
-[node name="TextBox" parent="CanvasLayer/UI/DialogueBox" index="1"]
+[node name="TextBox" parent="CanvasLayer/UI/DialogueBox" index="0"]
 text = "test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
-
-[node name="screen_effect_timer" type="Timer" parent="."]
-wait_time = 0.5
-[connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
 [connection signal="hit" from="player_ship" to="CanvasLayer/UI" method="_on_player_ship_hit"]
+[connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
 [connection signal="timeout" from="player_ship/Timer" to="player_ship" method="_on_Timer_timeout"]
 [connection signal="hit" from="Boss" to="CanvasLayer/UI" method="_on_Boss_hit"]
 [connection signal="game_over" from="CanvasLayer/UI" to="." method="_on_UI_game_over"]
-[connection signal="timeout" from="screen_effect_timer" to="." method="_on_screen_effect_timer_timeout"]
 
 [editable path="CanvasLayer/UI"]
