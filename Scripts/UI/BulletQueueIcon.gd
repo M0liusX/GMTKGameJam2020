@@ -26,11 +26,11 @@ func _getBulletType():
 		5: return "explosive.png"
 		_: return "basic.png"
 		
-var i = 100
-func _process(_delta):
-	if i == 0:
-		var nextBullet = _getBulletType()
-		_updateIcon(nextBullet)
-		i = 100
-	i = i-1
+#var i = 100
+#func _process(_delta):
+#	if i == 0:
+#		var nextBullet = _getBulletType()
+#		_updateIcon(nextBullet)
+#		i = 100
+#	i = i-1
 	#print(i)

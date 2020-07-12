@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GMTKGameJam2020"
-run/main_scene="res://Scenes/prototype_UI.tscn"
+run/main_scene="res://Scenes/prototype_2.tscn"
 boot_splash/use_filter=false
 config/icon="res://icon.png"
 

@@ -41,4 +41,7 @@ func _on_Boss_hit(boss, text=null):
 	var health = bossHealth.updateHealth(-0.4)
 	var bossDialogue = $DialogueBox
 	bossDialogue.updateDialogue(health, text)
-	
+
+func _on_player_ship_pass_bullet(bullet):
+	var bulletDisplay = $IconBox/BulletQueueIcon
+	bulletDisplay.texture = bullet

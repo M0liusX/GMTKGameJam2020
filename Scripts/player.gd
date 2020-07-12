@@ -25,11 +25,13 @@ var velocity = Vector2.ZERO
 var shipVelocity = Vector2.ZERO
 var mouseVelocity = Vector2.ZERO
 signal hit(player)
+signal pass_bullet(bullet)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	nextBullet = bulletSelection[randi()%3]
+	emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -90,6 +92,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_select") and Mode == SHIP:
 		var activeBullet = nextBullet.instance()
 		nextBullet = bulletSelection[randi() % 3]
+		emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture)
 		add_child(activeBullet)
 		activeBullet.set_as_toplevel(true)
 		var iposition = self.get_position()

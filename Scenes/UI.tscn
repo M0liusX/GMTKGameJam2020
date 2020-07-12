@@ -8,7 +8,7 @@
 [ext_resource path="res://Scripts/UI/IconBox.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/UI/UI.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Art/iconBox.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Art/BulletIcons/basic.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Art/PixelSpaceRage/Laser_Medium_png_processed.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Art/dialogueBox.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/UI/LawQueueIcon.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Art/LawIcons/Empty.png" type="Texture" id=13]
@@ -85,11 +85,12 @@ __meta__ = {
 }
 
 [node name="BulletQueueIcon" type="TextureRect" parent="IconBox"]
-margin_left = 9.0676
-margin_top = 5.19131
-margin_right = 265.068
-margin_bottom = 261.191
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = 57.1943
+margin_top = 43.2469
+margin_right = 200.194
+margin_bottom = 179.247
+rect_rotation = 180.0
+rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 __meta__ = {
