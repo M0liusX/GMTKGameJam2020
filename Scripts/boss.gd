@@ -126,7 +126,7 @@ func do_idle():
 	if actionTime > 3:
 		actionTime = 0
 		expression = Expression.NORMAL
-		change_state(State.SUMMON)
+		change_state(randi()%2 + 1)
 
 func do_summon():
 	show_character()
@@ -136,9 +136,8 @@ func do_summon():
 		expression = Expression.LAUGH
 		# Make Instance
 		var Enemy = BASIC_ENEMY.instance()
-		var position = Vector2(-1800, -800 +  (randi()%1)*400)
+		var position = Vector2(-1800, -800 + (randi()%2)*400)
 		Enemy.set_global_position(position)
-		print(Enemy.global_position)
 		self.add_child(Enemy)
 	
 	if actionCounter > 1:
@@ -157,12 +156,14 @@ func do_bubbley():
 		BubbleInstance.set_scale(Vector2(1+scaling, 1+scaling))
 		self.add_child(BubbleInstance)
 		
-		if Laws.Law.DOUBLE_BULLETS in Laws.currentLaws:
+		var currentLaws = [] + Laws.currentLaws
+		while Laws.Law.DOUBLE_BULLETS in currentLaws:
 			var BubbleInstance2 = BUBBLE.instance()
 			position = Vector2(position.x, position.y + 10)
 			BubbleInstance2.set_position(position)
 			BubbleInstance2.set_scale(Vector2(1+scaling, 1+scaling))
 			self.add_child(BubbleInstance2)
+			currentLaws.erase(Laws.Law.DOUBLE_BULLETS)
 			
 		actionCounter+=1
 
@@ -174,7 +175,7 @@ func get_potential_laws():
 		State.BUBBLEY:
 			return [Laws.Law.DOUBLE_BULLETS]
 		_:
-			return range(Laws.LAW_COUNT)
+			return [Laws.Law.DOUBLE_BULLETS]
 
 func change_state(newState):
 	actionCounter = 0

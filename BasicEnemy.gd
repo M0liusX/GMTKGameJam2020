@@ -12,11 +12,20 @@ func MovementLoop(delta):
 	
 
 func ShootBullet():
-	print("BasicEnemy: ShootBullet")
 	var bullet = bullet_scene.instance()
-	bullet.set_position(Vector2(0,0))
+	var iposition = Vector2(0,0)
+	bullet.set_position(iposition)
 	add_child(bullet)
 	bullet.set_as_toplevel(true)
+	
+	var currentLaws = [] + Laws.currentLaws
+	while Laws.Law.DOUBLE_BULLETS in currentLaws:
+		var bullet2 = bullet_scene.instance()
+		iposition = Vector2(iposition.x, iposition.y + 5)
+		bullet2.set_position(iposition)
+		add_child(bullet2)
+		bullet.set_as_toplevel(true)
+		currentLaws.erase(Laws.Law.DOUBLE_BULLETS)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,12 +36,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	MovementLoop(delta)
-	
 	if (time >= BulletFrequency):
 		ShootBullet()
 		time = 0
 		
 	time += delta
-	
+	if global_position.x <= -10:
+		got_hit()
+		
 func got_hit(damage = 0):
 	queue_free()
