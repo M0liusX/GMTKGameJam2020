@@ -121,15 +121,18 @@ func _process(_delta):
 			
 func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 		if shipCheck:
-			if shipCheck.collider.is_in_group("enemy") and not (Laws.Law.INVINCIBILITY in Laws.currentLaws):
-				print("hit")
+			if shipCheck.collider.is_in_group("enemy"):
 				# Switching layers here creates invincibility Layers 4, 2^3 = 8
 				_set_layers(8)
-				emit_signal("hit", self)
-				timer.start()
-				flashing = true
+				if !(Laws.Law.INVINCIBILITY in Laws.currentLaws):
+					emit_signal("hit", self)
+					timer.start()
+					flashing = true
 		if bulletCheck:
 			# @TODO: Double-check bullet on bullet collision
+			if bulletCheck.collider.is_in_group("wall"):
+				activeBullets.erase(activeBullet)
+				activeBullet.queue_free()
 			var bulletString = "bullet"
 			if bulletCheck.collider.is_in_group("enemy") and !(bulletString in bulletCheck.collider.get_name()):
 				print(bulletCheck.collider.get_name())
