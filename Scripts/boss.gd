@@ -4,6 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+signal hit(boss)
 
 enum State {IDLE,
 			BUBBLEY,
@@ -199,6 +200,7 @@ func got_hit(damage):
 	expression = Expression.SHOCKED
 	show_character()
 	print("boss health: " + str(health))
+	emit_signal("hit", self)
 	
 	if health <= 0:
 		print("YOU WIN")

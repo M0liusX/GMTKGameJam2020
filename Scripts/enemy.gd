@@ -20,3 +20,6 @@ func _process(delta):
 	# Physics for movement
 	velocity = velocity.move_toward(MAX_VELOCITY, ACCELERATION)
 	move_and_collide(velocity)
+
+func got_hit(damage = 0):
+	queue_free()

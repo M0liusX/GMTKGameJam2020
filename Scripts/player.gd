@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 # Declare member variables here
 onready var bullet = preload("res://Objects/bullet.tscn")
-onready var activeBullet
+var activeBullets = []
 
 export var MAX_SPEED = 10
 export var ACCELERATION = 2
@@ -54,24 +54,47 @@ func _process(_delta):
 		var collisionCheck = move_and_collide(velocity)
 		checkCollisions(collisionCheck, null)
 	elif Mode == BULLET:
-#		var shipCheck = move_and_collide(Vector2.ZERO,true,true,true)
-		shipVelocity = shipVelocity.move_toward(directions[movementRNG] * MAX_SPEED, ACCELERATION)
-		var shipCheck = move_and_collide(shipVelocity)
-		var bulletCheck = activeBullet.move_and_collide(velocity)
-		checkCollisions(shipCheck, bulletCheck)
+		for activeBullet in activeBullets:
+	#		var shipCheck = move_and_collide(Vector2.ZERO,true,true,true)
+			shipVelocity = shipVelocity.move_toward(directions[movementRNG] * MAX_SPEED, ACCELERATION)
+			var shipCheck = move_and_collide(shipVelocity)
+			var bulletCheck = activeBullet.move_and_collide(velocity)
+			checkCollisions(shipCheck, bulletCheck, activeBullet)
 
 
 	# Check to see if player fired a bullet and switch mode
 	if Input.is_action_just_pressed("ui_select") and Mode == SHIP:
-		activeBullet = bullet.instance()
+		var activeBullet = bullet.instance()
 		add_child(activeBullet)
 		activeBullet.set_as_toplevel(true)
-		activeBullet.set_position(self.get_position())
+		var iposition = self.get_position()
+		iposition.x += 20
+		activeBullet.set_position(iposition)
 		Mode = BULLET
+		activeBullets.append(activeBullet)
 		# Random Ship Movement
 		movementRNG = randi() % 3
-
-func checkCollisions(shipCheck, bulletCheck):
+		
+		var currentLaws = [] + Laws.currentLaws
+		#for i in range(1):
+		while Laws.Law.DOUBLE_BULLETS in currentLaws:
+			var activeBullet2 = bullet.instance()
+			add_child(activeBullet2)
+			activeBullet2.set_as_toplevel(true)
+			iposition = Vector2(iposition.x, iposition.y + 5)
+			activeBullet2.set_position(iposition)
+			activeBullets.append(activeBullet2)
+			currentLaws.erase(Laws.Law.DOUBLE_BULLETS)
+	
+	# Check if active bullets leave the screen
+	for activeBullet in activeBullets:
+		if activeBullet.global_position.x > 1400:
+			activeBullets.erase(activeBullet)
+			activeBullet.queue_free()
+			if activeBullets.size() == 0:
+				Mode = SHIP
+			
+func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 		if shipCheck:
 			if shipCheck.collider.is_in_group("enemy"):
 				print("hit")
@@ -84,9 +107,11 @@ func checkCollisions(shipCheck, bulletCheck):
 			# @TODO: Double-check bullet on bullet collision
 			if bulletCheck.collider.is_in_group("enemy") and !bulletCheck.collider.is_in_group("bullet"):
 				print("enemy hit")
-				bulletCheck.collider.got_hit(10)
-			activeBullet.queue_free()
-			Mode = SHIP
+				bulletCheck.collider.got_hit(2)
+				activeBullets.erase(activeBullet)
+				activeBullet.queue_free()
+				if activeBullets.size() == 0:
+					Mode = SHIP
 
 func _on_Timer_timeout():
 	# Layers 1, 2, and 4, i.e. 2^0 + 2^1 + 2^3 = 11

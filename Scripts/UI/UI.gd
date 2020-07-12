@@ -35,3 +35,7 @@ func _on_player_ship_hit(player):
 	var health = playerHealth.updateHealth(-25)
 	if health == 0:
 		emit_signal("game_over", player)
+
+func _on_Boss_hit(boss):
+	var bossHealth = $BossHealth/BossHealthBar
+	var health = bossHealth.updateHealth(-2)
