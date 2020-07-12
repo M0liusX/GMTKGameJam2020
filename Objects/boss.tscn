@@ -412,13 +412,13 @@ visible = false
 texture = ExtResource( 13 )
 
 [node name="Blush" type="Node2D" parent="Sprite"]
+visible = false
 position = Vector2( 9, -121 )
 
 [node name="1" type="Sprite" parent="Sprite/Blush"]
 texture = ExtResource( 6 )
 
 [node name="2" type="Sprite" parent="Sprite/Blush"]
-visible = false
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

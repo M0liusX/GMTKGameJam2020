@@ -64,6 +64,8 @@ var actionTime = 0
 var actionCounter = 0
 
 var currentState = State.IDLE
+var Angry = true
+var InLove = false 
 
 const HAIRCOLORS = 5
 onready var BackHair = $Sprite/BackHair
@@ -114,7 +116,8 @@ func _process(delta):
 	actionTime += delta
 	process_laws()
 	state_machine()
-	
+	if InLove:
+		Blush.show()
 # Checks elapsed time and adds a new law`
 func process_laws():
 	if elapsedTime > stepInterval:
@@ -127,6 +130,9 @@ func do_idle():
 	if actionTime > 3:
 		actionTime = 0
 		expression = Expression.NORMAL
+		if Angry:
+			expression = Expression.ANGRY
+			
 		change_state(randi()%2 + 1)
 
 func do_summon():
@@ -135,13 +141,15 @@ func do_summon():
 		actionTime = 0
 		actionCounter += 1
 		expression = Expression.LAUGH
+		if Angry:
+			expression = Expression.SMUG
 		# Make Instance
 		var Enemy = BASIC_ENEMY.instance()
 		var position = Vector2(-1800, -800 + (randi()%2)*400)
 		Enemy.set_global_position(position)
 		self.add_child(Enemy)
 	
-	if actionCounter > 1:
+	if actionCounter > (1 + int(Angry)*2):
 		change_state(State.IDLE)
 		
 func do_bubbley():
@@ -168,7 +176,7 @@ func do_bubbley():
 			
 		actionCounter+=1
 
-	if actionCounter > 10:
+	if actionCounter > (10 + int(Angry)*10) :
 		change_state(State.IDLE)
 	
 func get_potential_laws():
