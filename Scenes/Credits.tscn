@@ -42,6 +42,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label10" type="Label" parent="."]
+margin_left = -306.0
+margin_top = 192.0
+margin_right = -34.0
+margin_bottom = 223.0
+rect_scale = Vector2( 3, 3 )
+text = "CREDITS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="."]
+margin_left = 516.932
+margin_top = 478.599
+margin_right = 788.932
+margin_bottom = 509.599
+rect_scale = Vector2( 3, 3 )
+text = "Press Space To Return"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label2" type="Label" parent="."]
 visible = false
 margin_left = 34.0

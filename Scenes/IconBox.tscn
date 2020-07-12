@@ -5,8 +5,6 @@
 [ext_resource path="res://Scripts/UI/BulletQueueIcon.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/UI/IconBox.gd" type="Script" id=4]
 
-
-
 [node name="IconBox" type="NinePatchRect"]
 margin_right = 81.0
 margin_bottom = 74.0

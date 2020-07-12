@@ -127,6 +127,7 @@ text = "test"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+autoplay = true
 
 [node name="screen_effect_timer" type="Timer" parent="."]
 [connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]

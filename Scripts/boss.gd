@@ -297,6 +297,7 @@ func got_hit(damage):
 	elif LoveMeter==3 and health > 0:
 		text = "..."
 		currentState = State.END
+		actionCounter = 0
 	elif LoveMeter==3 and health <= 0:
 		text = "Why?"
 		
