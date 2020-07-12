@@ -42,6 +42,9 @@ func _on_Boss_hit(boss, text=null):
 	var bossDialogue = $DialogueBox
 	bossDialogue.updateDialogue(health, text)
 
-func _on_player_ship_pass_bullet(bullet):
+func _on_player_ship_pass_bullet(bullet, heart):
 	var bulletDisplay = $IconBox/BulletQueueIcon
 	bulletDisplay.texture = bullet
+#	if !heart:
+#		bulletDisplay.rect_position = Vector2(self.rect_position.x + 20, self.rect_position.y + 30)
+	

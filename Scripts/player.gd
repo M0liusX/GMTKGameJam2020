@@ -5,10 +5,11 @@ extends KinematicBody2D
 onready var bullet = preload("res://Objects/bullet2.tscn")
 onready var bullet2 = preload("res://Objects/bullet3.tscn")
 onready var bullet3 = preload("res://Objects/bullet4.tscn")
-onready var bulletSelection = [bullet, bullet2, bullet3]
+onready var bullet4 = preload("res://Objects/bullet5.tscn")
+onready var bulletSelection = [bullet, bullet2, bullet3, bullet4]
 onready var timer = $Timer
 
-const BULLET_COUNT = 3
+const BULLET_COUNT = 4
 export var MAX_SPEED = 10
 export var ACCELERATION = 2
 export var FRICTION = 2
@@ -21,17 +22,22 @@ enum {SHIP, BULLET}
 var Mode = SHIP
 var directions = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 
+var heart = false
 var velocity = Vector2.ZERO
 var shipVelocity = Vector2.ZERO
 var mouseVelocity = Vector2.ZERO
 signal hit(player)
-signal pass_bullet(bullet)
+signal pass_bullet(bullet, heart)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	nextBullet = bulletSelection[randi()%3]
-	emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture)
+	nextBullet = bulletSelection[randi()%BULLET_COUNT]
+	if nextBullet.instance().is_in_group("heart"):
+		heart = true
+	else:
+		heart = false
+	emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture, heart)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -91,8 +97,12 @@ func _process(_delta):
 	# Check to see if player fired a bullet and switch mode
 	if Input.is_action_just_pressed("ui_select") and Mode == SHIP:
 		var activeBullet = nextBullet.instance()
-		nextBullet = bulletSelection[randi() % 3]
-		emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture)
+		nextBullet = bulletSelection[randi() % BULLET_COUNT]
+		if nextBullet.instance().is_in_group("heart"):
+			heart = true
+		else:
+			heart = false
+		emit_signal("pass_bullet", nextBullet.instance().get_child(1).texture, heart)
 		add_child(activeBullet)
 		activeBullet.set_as_toplevel(true)
 		var iposition = self.get_position()
@@ -138,9 +148,11 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 				activeBullet.queue_free()
 			var bulletString = "bullet"
 			if bulletCheck.collider.is_in_group("enemy") and !(bulletString in bulletCheck.collider.get_name()):
-				print(bulletCheck.collider.get_name())
 				print("enemy hit")
-				bulletCheck.collider.got_hit(2)
+				if activeBullet.is_in_group("heart"):
+					bulletCheck.collider.got_hit(-2)
+				else:
+					bulletCheck.collider.got_hit(2)
 				activeBullets.erase(activeBullet)
 				activeBullet.queue_free()
 			if activeBullets.size() == 0:
