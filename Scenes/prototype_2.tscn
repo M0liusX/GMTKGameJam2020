@@ -115,8 +115,8 @@ texture = ExtResource( 6 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
-[connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
 [connection signal="hit" from="player_ship" to="CanvasLayer/UI" method="_on_player_ship_hit"]
+[connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
 [connection signal="timeout" from="player_ship/Timer" to="player_ship" method="_on_Timer_timeout"]
 [connection signal="hit" from="Boss" to="CanvasLayer/UI" method="_on_Boss_hit"]
 [connection signal="game_over" from="CanvasLayer/UI" to="." method="_on_UI_game_over"]
