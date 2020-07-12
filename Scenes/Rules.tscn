@@ -1,0 +1,211 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Art/space1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Title.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Art/LawIcons/Mouse.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Art/iconBox.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Art/LawIcons/Double.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Art/LawIcons/Star.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Art/LawIcons/Reverse.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Art/LawIcons/Heart.png" type="Texture" id=8]
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 329.055, 400.646 )
+scale = Vector2( 1.25, 0.711 )
+texture = ExtResource( 1 )
+offset = Vector2( 248.473, -49.9648 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 621.971
+margin_top = 28.9824
+margin_right = 673.985
+margin_bottom = 42.9824
+text = "RULES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 64.3246
+margin_top = 67.0004
+margin_right = 653.325
+margin_bottom = 149.0
+text = "Space Waifu is out of control! She is even able to 
+alter the very laws of reality themselves! At timed intervals,
+she will change the laws of reality will transition and be marked 
+with one of the icons to the right. It is up for you to etiher 
+defeat her or love the out of control space waifu!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 64.3246
+margin_top = 199.002
+margin_right = 653.325
+margin_bottom = 281.002
+text = "Finally, when shooting, you are so nervous that you can't control
+the spaceship! Be careful!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 64.3246
+margin_top = 309.313
+margin_right = 653.325
+margin_bottom = 391.313
+text = "UP - Move Spaceship up
+Down - Move Spaceship Down
+Right - Move Spaceship Right
+Left - Move Spaceship Left
+Space - Fire!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Laws" type="Label" parent="."]
+margin_left = 791.398
+margin_top = 15.6401
+margin_right = 874.398
+margin_bottom = 29.6401
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Law1" type="NinePatchRect" parent="Laws"]
+margin_left = 5.72205e-06
+margin_top = 84.9188
+margin_right = 53.0
+margin_bottom = 144.919
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Laws/Law1"]
+position = Vector2( 26.7777, 29.8965 )
+scale = Vector2( 1.3555, 1.30943 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Laws/Law1"]
+margin_left = 81.4203
+margin_top = 2.97044
+margin_right = 464.42
+margin_bottom = 33.9704
+text = "Reverse Controls - Pressing Left will make ship move Right, 
+pressing Up will make ship move Down, and vice versa."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Law2" type="NinePatchRect" parent="Laws"]
+margin_left = 1.59986
+margin_top = 198.876
+margin_right = 54.5999
+margin_bottom = 258.876
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Laws/Law2"]
+position = Vector2( 27.13, 30.4217 )
+scale = Vector2( 1.38993, 1.28054 )
+texture = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="Laws/Law2"]
+margin_left = 82.2278
+margin_top = -0.139206
+margin_right = 465.228
+margin_bottom = 30.8608
+text = "Mouse Control - Change control scheme such that ship 
+is controlled by mouse movement instead of keyboard."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Law3" type="NinePatchRect" parent="Laws"]
+margin_left = 1.59985
+margin_top = 316.681
+margin_right = 54.5999
+margin_bottom = 376.681
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Laws/Law3"]
+position = Vector2( 27.0126, 30.4074 )
+scale = Vector2( 1.31389, 1.39553 )
+texture = ExtResource( 5 )
+
+[node name="Label3" type="Label" parent="Laws/Law3"]
+margin_left = 82.2278
+margin_right = 465.228
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 141.987, 159.074 )
+text = "Double Bullets - All player bullets are doubled"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Law4" type="NinePatchRect" parent="Laws"]
+margin_left = 3.19971
+margin_top = 440.776
+margin_right = 56.1997
+margin_bottom = 497.776
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Laws/Law4"]
+position = Vector2( 27.0576, 28.645 )
+scale = Vector2( 1.32365, 1.34717 )
+texture = ExtResource( 6 )
+
+[node name="Label4" type="Label" parent="Laws/Law4"]
+margin_left = 78.2206
+margin_right = 461.221
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 141.987, 159.074 )
+text = "Invincibility - Players is invincible"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Law5" type="NinePatchRect" parent="Laws"]
+margin_left = 1.59985
+margin_top = 570.701
+margin_right = 54.5999
+margin_bottom = 630.701
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Laws/Law5"]
+position = Vector2( 26.7213, 30.501 )
+scale = Vector2( 1.44466, 1.36148 )
+texture = ExtResource( 8 )
+
+[node name="Label5" type="Label" parent="Laws/Law5"]
+margin_left = 77.2842
+margin_top = 3.27136
+margin_right = 317.284
+margin_bottom = 34.2714
+rect_pivot_offset = Vector2( 141.987, 159.074 )
+text = "Heart - Send love instead of war <3
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
