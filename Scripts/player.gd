@@ -23,6 +23,13 @@ signal hit(player)
 func _ready():
 	randomize()
 
+#func _input(event):
+#   # Mouse in viewport coordinates
+#   if event is InputEventMouseButton:
+#	   print("Mouse Click/Unclick at: ", event.position)
+#   elif event is InputEventMouseMotion:
+#	   print(event.relative)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # NOTE: If we decide to use delta, remove underscore preceding it
 func _process(_delta):
@@ -42,6 +49,9 @@ func _process(_delta):
 		inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up") 
 	inputVector = inputVector.normalized()
+	
+#	if InputEvent.accumlate(InputDefault):
+#		print("hello")
 	
 	# Physics for movement
 	if inputVector:
