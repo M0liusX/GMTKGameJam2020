@@ -12,11 +12,14 @@ var Initial = ["Why are you hurting me!",
 				"Please just get away from me.",
 				"Who asked for you?",
 				"Is this how you treat a lady?",
-				"Do you kiss your mother with that mouth?"
+				"Do you kiss your mother with that mouth?",
+				"I hate people like you.",
+				"Can't I just be left alone in peace",
 ]
 
 var Angry = ["That is it! I am through with you! Go to hell!",
 			"I will take you to the depths of hell!",
+			"You will pay for what you have done",
 			"You meenie!",
 			"That didn't even hurt...",
 			"I'LL BLOW YOU UP >:|",
@@ -31,10 +34,12 @@ var HeartOne = ["I never knew you felt that way towards me.",
 				"What did I do to deserve this!?",
 				"Please just leave me alone...",
 				"*sob* *sob*",
+				"Go away!",
 ]
 
 var HeartTwo = ["(This feeling inside of me... is this Love?)",
 				"Don't touch me there!",
+				"That feels good...",
 				"Ahhhh",
 				"*moan*",
 ]

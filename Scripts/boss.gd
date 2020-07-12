@@ -74,6 +74,7 @@ var LoveMeter = 0
 
 var firstLoveOne = false
 var firstLoveTwo = false
+var firstLoveThree = false
 var firstInitial = false
 var firstAngry = false
 
@@ -257,8 +258,12 @@ func got_hit(damage):
 		
 	### Love Meter Code
 	if damage == -1:
-		Laws.currentLaws[0] = Laws.Law.LOVE
-		LoveMeter = 0
+		if Laws.currentLaws.size() < 3:
+			Laws.currentLaws.append(Laws.Law.LOVE)
+		else:
+			Laws.currentLaws[0] = Laws.Law.LOVE
+	
+	LoveMeter = 0
 	for law in Laws.currentLaws:
 		if law == Laws.Law.LOVE:
 			LoveMeter += 1
@@ -270,9 +275,10 @@ func got_hit(damage):
 		print("YOU WIN")
 		queue_free()
 	
-	if LoveMeter== 3 and currentState == State.END and actionCounter > 2:
+	if LoveMeter == 3 and currentState == State.END and actionCounter > 2:
 		emit_signal("hit", self, "THE END")
 		queue_free()
+		return
 		
 	#Dialogue shit
 	var text = null
