@@ -33,6 +33,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label5" type="Label" parent="."]
+margin_left = 621.971
+margin_top = 28.9824
+margin_right = 673.985
+margin_bottom = 42.9824
+text = "RULES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 621.971
+margin_top = 28.9824
+margin_right = 673.985
+margin_bottom = 42.9824
+text = "RULES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="."]
+margin_left = 621.971
+margin_top = 28.9824
+margin_right = 673.985
+margin_bottom = 42.9824
+text = "RULES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="."]
+margin_left = 196.0
+margin_top = 538.0
+margin_right = 352.0
+margin_bottom = 562.0
+rect_scale = Vector2( 2, 2 )
+text = "PRESS TAB TO RETURN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label2" type="Label" parent="."]
 margin_left = 64.3246
 margin_top = 67.0004
@@ -59,15 +100,16 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 64.3246
+margin_left = 62.3246
 margin_top = 309.313
-margin_right = 653.325
+margin_right = 651.325
 margin_bottom = 391.313
 text = "UP - Move Spaceship up
 Down - Move Spaceship Down
 Right - Move Spaceship Right
 Left - Move Spaceship Left
-Space - Fire!"
+Space - Fire!
+Tab - Restart Fight"
 __meta__ = {
 "_edit_use_anchors_": false
 }
