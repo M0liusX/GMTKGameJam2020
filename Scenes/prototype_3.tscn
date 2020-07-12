@@ -110,5 +110,10 @@ texture = ExtResource( 6 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
+
+[node name="screen_effect_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 [connection signal="hit" from="player_ship" to="." method="_on_player_ship_hit"]
 [connection signal="timeout" from="player_ship/Timer" to="player_ship" method="_on_Timer_timeout"]
+[connection signal="timeout" from="screen_effect_timer" to="." method="_on_screen_effect_timer_timeout"]
