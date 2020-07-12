@@ -22,12 +22,15 @@ func getRandomText(i):
 		_: return "Fufufufufu"
 
 var i = 0
-func updateDialogue(health):
+func updateDialogue(health, text=null):
 	var textBox = $TextBox
 	if health == 0:
 		textBox.text = "WWWAAAAAAAAHHHHHH"
 	else:
-		textBox.text = getRandomText(i)
+		if text == null:
+			textBox.text = getRandomText(i)
+		else:
+			textBox.text = text
 	i += 1
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

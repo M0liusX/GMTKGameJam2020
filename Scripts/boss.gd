@@ -9,6 +9,8 @@ signal hit(boss)
 enum State {IDLE,
 			BUBBLEY,
 			SUMMON,
+			START,
+			END,
 }
 
 # Visual Enums
@@ -63,9 +65,15 @@ var elapsedTime = 0
 var actionTime = 0
 var actionCounter = 0
 
-var currentState = State.IDLE
-var Angry = true
+var currentState = State.END
+var Angry = false
 var InLove = false 
+var LoveMeter = 0
+
+var firstLoveOne = false
+var firstLoveTwo = false
+var firstInitial = false
+var firstAngry = false
 
 const HAIRCOLORS = 5
 onready var BackHair = $Sprite/BackHair
@@ -114,17 +122,38 @@ func _process(delta):
 		
 	elapsedTime += delta
 	actionTime += delta
-	process_laws()
+	if currentState != State.START and currentState != State.END and LoveMeter != 3:
+		process_laws()
 	state_machine()
+	
+	LoveMeter = 0
+	for law in Laws.currentLaws:
+		if law == Laws.Law.LOVE:
+			LoveMeter += 1
+	InLove = (LoveMeter > 1)
 	if InLove:
 		Blush.show()
+		
 # Checks elapsed time and adds a new law`
 func process_laws():
 	if elapsedTime > stepInterval:
 		elapsedTime = 0
 		var newLaw = Laws.step(get_potential_laws())
 		
-
+func do_start():
+	show_character()
+	
+func do_end():
+	show_character()
+	if actionCounter > 2:
+		return
+		
+	if actionTime > 4:
+		actionTime = 0
+		emit_signal("hit", self, Dialogue.HeartThree[actionCounter])
+		actionCounter += 1
+		expression = Expression.DELIGHTED
+	
 func do_idle():
 	show_character()
 	if actionTime > 3:
@@ -184,7 +213,7 @@ func get_potential_laws():
 		State.BUBBLEY:
 			return [Laws.Law.DOUBLE_BULLETS]
 		_:
-			return [Laws.Law.REVERSE_CONTROLS]#range(Laws.LAW_COUNT)
+			return range(Laws.LAW_COUNT)
 
 func change_state(newState):
 	actionCounter = 0
@@ -199,20 +228,63 @@ func state_machine():
 			do_idle()
 		State.SUMMON:
 			do_summon()
+		State.START:
+			do_start()
+		State.END:
+			do_end()
 		_:
 			do_idle()
 			
 func got_hit(damage):
-	health -= damage
+	if damage!=-1:
+		health -= damage
 	expression = Expression.SHOCKED
 	show_character()
 	print("boss health: " + str(health))
-	emit_signal("hit", self)
+	if health < 300:
+		Angry = true
+		
+	### Love Meter Code
+	if damage == -1:
+		Laws.currentLaws[0] = Laws.Law.LOVE
+		LoveMeter = 0
+	for law in Laws.currentLaws:
+		if law == Laws.Law.LOVE:
+			LoveMeter += 1
 	
+	if LoveMeter==3 and damage!=-1:
+		health=0
+	####
 	if health <= 0:
 		print("YOU WIN")
 		queue_free()
+		
+	#Dialogue shit
+	var text = null
+	if Angry:
+		text = Dialogue.Angry[(randi()%(Dialogue.Angry.size()-1)) * int(firstAngry) + int(firstAngry)]
+		firstAngry = true
+	elif LoveMeter==0:
+		text = Dialogue.Initial[(randi()%(Dialogue.Initial.size()-1)) * int(firstInitial) + int(firstInitial)]
+		firstInitial = true
+	elif LoveMeter==1:
+		text = Dialogue.HeartOne[(randi()%(Dialogue.HeartOne.size()-1)) * int(firstLoveOne) + int(firstLoveOne)]
+		firstLoveOne = true
+	elif LoveMeter==2:
+		text = Dialogue.HeartTwo[(randi()%(Dialogue.HeartTwo.size()-1)) * int(firstLoveTwo) + int(firstLoveTwo)]
+		firstLoveTwo = true
+	elif LoveMeter==3 and health > 0:
+		text = "..."
+		currentState = State.END
+	elif LoveMeter==3 and health <= 0:
+		text = "Why?"
+		
+	emit_signal("hit", self, text)
+
 	
+	if currentState == State.START:
+		currentState = State.BUBBLEY
+
 func show_character():
 	randomize()
 	if haircolor == -1:

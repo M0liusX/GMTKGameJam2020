@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Laws="*res://Scripts/Globals/Laws.gd"
+Dialogue="*res://Scripts/Globals/Dialogue.gd"
 
 [display]
 
