@@ -6,7 +6,8 @@ extends Node
 # var b = "text"
 enum Law {REVERSE_CONTROLS,   # REVERSES (UP/DOWN) & (LEFT/RIGHT) 
 		  MOUSE_CONTROLS,     # CHANGES CONTROL SCHEME 
-		  DOUBLE_BULLETS,     # All Bullets Doubles 
+		  DOUBLE_BULLETS,     # All Bullets Doubles
+		  INVINCIBILITY,      # Gives Player Invicibility  
 }
 		
 const LAW_COUNT = 3   # Update whenever you add a new law (Subtract Special Laws)

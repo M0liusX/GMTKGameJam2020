@@ -44,5 +44,5 @@ func _process(delta):
 	if global_position.x <= -10:
 		got_hit()
 		
-func got_hit(damage = 0):
+func got_hit(_damage = 0):
 	queue_free()
