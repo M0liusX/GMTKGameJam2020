@@ -248,7 +248,7 @@ func state_machine():
 			do_idle()
 			
 func got_hit(damage):
-	if damage!=-1:
+	if damage > 0:
 		health -= damage
 	expression = Expression.SHOCKED
 	show_character()
@@ -257,7 +257,7 @@ func got_hit(damage):
 		Angry = true
 		
 	### Love Meter Code
-	if damage == -1:
+	if damage < 0:
 		if Laws.currentLaws.size() < 3:
 			Laws.currentLaws.append(Laws.Law.LOVE)
 		else:
@@ -268,7 +268,7 @@ func got_hit(damage):
 		if law == Laws.Law.LOVE:
 			LoveMeter += 1
 	
-	if LoveMeter==3 and damage!=-1:
+	if LoveMeter==3 and damage > 0:
 		health=0
 	####
 	if health <= 0:
