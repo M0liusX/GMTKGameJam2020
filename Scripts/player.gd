@@ -116,7 +116,9 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 				flashing = true
 		if bulletCheck:
 			# @TODO: Double-check bullet on bullet collision
-			if bulletCheck.collider.is_in_group("enemy") and !bulletCheck.collider.is_in_group("bullet"):
+			var bulletString = "bullet"
+			if bulletCheck.collider.is_in_group("enemy") and !(bulletString in bulletCheck.collider.get_name()):
+				print(bulletCheck.collider.get_name())
 				print("enemy hit")
 				bulletCheck.collider.got_hit(2)
 			activeBullets.erase(activeBullet)

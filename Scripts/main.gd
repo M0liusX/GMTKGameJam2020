@@ -16,10 +16,6 @@ func _unhandled_input(event):
 			get_tree().quit()
 		if event.pressed and event.scancode == KEY_TAB:
 			get_tree().reload_current_scene()
-			
-#func _input(_event):
-#	Input.is_action("ui_focus_next"):
-#		print("k")
 
 # Uncomment for one-hit deaths
 #func _on_player_ship_hit(player):
