@@ -14,6 +14,8 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
+		if event.pressed and event.scancode == KEY_TAB:
+			get_tree().reload_current_scene()
 
 # Uncomment for one-hit deaths
 #func _on_player_ship_hit(player):

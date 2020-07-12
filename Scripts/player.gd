@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 # Declare member variables here
 onready var bullet = preload("res://Objects/bullet.tscn")
+onready var timer = $Timer
 var activeBullets = []
 
 export var MAX_SPEED = 10
@@ -17,11 +18,17 @@ var directions = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 
 var velocity = Vector2.ZERO
 var shipVelocity = Vector2.ZERO
+var mouseVelocity = Vector2.ZERO
 signal hit(player)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		mouseVelocity = event.relative
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # NOTE: If we decide to use delta, remove underscore preceding it
@@ -29,7 +36,7 @@ func _process(_delta):
 	
 	# Effect for hitting the player
 	if flashing:
-		modulate = Color(1,1,1, 0.1)
+		modulate = Color(1,1,1, 0.5)
 
 	# Generate a random direction
 	movementRNG = randi() % 3
@@ -42,6 +49,10 @@ func _process(_delta):
 		inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up") 
 	inputVector = inputVector.normalized()
+
+	if Laws.Law.MOUSE_CONTROLS in Laws.currentLaws:
+		velocity = mouseVelocity.move_toward(mouseVelocity * MAX_SPEED, ACCELERATION)
+		print(velocity)
 	
 	# Physics for movement
 	if inputVector:
@@ -101,11 +112,13 @@ func checkCollisions(shipCheck, bulletCheck, activeBullet = null):
 				# Layers 4, 2^3
 				_set_layers(8)
 				emit_signal("hit", self)
-				$Timer.start()
+				timer.start()
 				flashing = true
 		if bulletCheck:
 			# @TODO: Double-check bullet on bullet collision
-			if bulletCheck.collider.is_in_group("enemy") and !bulletCheck.collider.is_in_group("bullet"):
+			var bulletString = "bullet"
+			if bulletCheck.collider.is_in_group("enemy") and !(bulletString in bulletCheck.collider.get_name()):
+				print(bulletCheck.collider.get_name())
 				print("enemy hit")
 				bulletCheck.collider.got_hit(2)
 			activeBullets.erase(activeBullet)
