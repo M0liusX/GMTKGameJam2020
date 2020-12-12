@@ -14,7 +14,6 @@ func _unhandled_input(event):
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
 		if event.pressed and event.scancode == KEY_TAB:
-			Laws.currentLaws = []
 			get_tree().reload_current_scene()
 
 # Uncomment for one-hit deaths
